@@ -1,75 +1,66 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-   		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Encriptador de texto</title>
-        <link rel="stylesheet" href="reset.css">
-        <link rel="stylesheet" href="style.css">
-		<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=IBM+Plex+Serif&family=Space+Mono&display=swap" rel="stylesheet">
-		<script src="script.js"></script>
-	</head>
-	<body>
-		<header>
-				<div class= "header">	
-					<br><p class="title">Encriptador de mensajes</p>
-					<img src="imagenes/logo.png">
-					<img src="imagenes/logo2.png">
-				</div>
-		 </header>
-			
-		<div class="container">	
-			<main>
-				<section class="left" id="left">
-					<div class="inputtext">
-						<textarea 
-						type="text"
-						id="textoInput"
-						placeholder="Ingrese el texto aqui"
-						autofocus></textarea>
-					</div>
-					<div>
-		        		<div>
-		        			<span class="info">
-		        			<img src="imagenes/!.svg" alt="advertencia" />
-		        			 Solo letras minúsculas y sin acentos </span>
-		        		</div>
-			        	<div>
-			        		<button onclick="encriptar()"><span>Encriptar </span></button>
-			        		<button onclick="desencriptar()" class="desencriptar"><span>Desencriptar</span></button>
-			        	</div>
-					</div>
-				</section>
-				<section class="right" id="rigth">
-					<div>
-						<img id="muñeco" class="muñeco" src="imagenes/Muñeco.png" alt="Ningún mensaje fue encontrado. Ingresa el texto que desees encriptar o desencriptar<"><br>
-						<textarea id="textoFinal" class="textoFinal" placeholder="Ningún mensaje fue encontrado"></textarea>
-						<br><p id="texto" class="info">Ingresa el texto que desees encriptar o desencriptar.</p>
-						<button class="desencriptar" id="copiar" onclick="copiar()" >Copiar</button>
-					</div>	
-				</section>
-			</main>
-		</div>
-		<footer class="footer ">
-			    <p>Create by Diego Llanos R<br>@diegollanosr<br></p>	
-		
-			    <a href="https://github.com/diegollanosr">
-					<img  src="https://img.icons8.com/sf-black-filled/30/1A1A1A/github.png"/>
-				</a>
 
-				<a href="https://www.linkedin.com/in/diegollanosr/">
-					<img src="https://img.icons8.com/color/30/null/linkedin.png"/>
-				</a>			
-		</footer>
-		
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Encriptador de texto</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logodlr.svg">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Space+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logos">
+                <img class="logo" src="imagenes/alura.svg">
+                <img class="logo" src="imagenes/logo.svg">
+            </div>
+            <h1 class="title">Encriptador de textos</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="left" id="left">
+                <textarea class="inputtextarea" id="textoInput" placeholder="Ingrese el texto aquí" autofocus></textarea>
+                <div class="content_botones">
+                    <span class="info">
+                        <img src="imagenes/!.svg" alt="advertencia" />
+                        Solo letras minúsculas y sin acentos
+                    </span>
+                    <div class="botones">
+                        <button id="button__encriptar" class="button__encriptar">Encriptar</button>
+                        <button id="button__desencriptar" class="button__desencriptar">Desencriptar</button>
+                    </div>
+                </div>
+            </section>
+            <section class="right" id="rigth">
+                <img id="munheco" class="munheco" src="imagenes/munheco.svg"
+                    alt="Ningún mensaje fue encontrado. Ingresa el texto que desees encriptar o desencriptar.">
+                <textarea id="textoFinal" class="textoFinal" placeholder="Ningún mensaje fue encontrado"></textarea>
+                <p id="textoInfo" class="info">Ingresa el texto que desees encriptar o desencriptar.</p>
+                <button class="button__copiar bn_ocultar" id="button__copiar">Copiar</button>
+            </section>
+        </div>
+    </main>
+    <footer class="footer ">
+        <p class="creador">Create by Diego Llanos R.<br><span class="usuario">@diegollanosr</span></p>
+        <div class="">
+            <a href="https://github.com/diegollanosr" target="_blank">
+                <img class="links" src="./imagenes/github.svg" />
+            </a>
+
+            <a href="https://www.linkedin.com/in/diegollanosr/" target="_blank">
+                <img class="links" src="./imagenes/linkedin.svg" />
+            </a>
+        </div>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+
 </html>
-<script>
-		const textarea = document.querySelector("textarea");
-			textarea.addEventListener("keyup", e =>{
-			textarea.style.height = "auto";
-			let scHeight = e.target.scrollHeight;
-			textarea.style.height = `${scHeight}px`; 
-		});
-</script>

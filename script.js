@@ -4,41 +4,95 @@
 //a - ai
 //u - ufat
 
-function encriptar() {
-	var texto = document.getElementById("textoInput").value.toLowerCase();
-
-
-	var txtcifrado = texto.replace(/e/igm,"enter");
-	var txtcifrado = txtcifrado.replace(/o/igm,"ober");
-	var txtcifrado = txtcifrado.replace(/i/igm,"imes");
-	var txtcifrado = txtcifrado.replace(/a/igm,"ai");
-	var txtcifrado = txtcifrado.replace(/u/igm,"ufat");
-
-	document.getElementById("muñeco").style.display = "none";
-	document.getElementById("texto").style.display = "none";
-	document.getElementById("copiar").style.display = "show";
-	document.getElementById("textoFinal").innerHTML = txtcifrado;
-	document.getElementById("textoInput").innerHTML = " ";
-	document.getElementById("copiar").style.display = "inherit";
+const encriptar = document.getElementById("button__encriptar");
+const desencriptar = document.getElementById("button__desencriptar");
+const copy = document.getElementById("button__copiar");
+const textoInicial = document.getElementById("textoInput");
+const textFinal = document.getElementById("textoFinal");
+const munheco = document.getElementById("munheco");
+const textInfo = document.getElementById("textoInfo");
+	
+const remplace = (newvalue) => {
+	textFinal.innerHTML = newvalue;
+	textFinal.classList.add("ajustar");
+	textoInicial.value = "";
+	textoInicial.style.height = "auto"
+	textoInicial.placeholder = "Ingrese el texto aquí";
+	munheco.classList.add("ocultar");
+	textInfo.classList.add("ocultar");
+	copy.classList.remove("bn_ocultar");
 }
-function desencriptar() {
-	var texto = document.getElementById("textoInput").value.toLowerCase();
-	var txtcifrado = texto.replace(/enter/igm,"e");
-	var txtcifrado = txtcifrado.replace(/ober/igm,"o");
-	var txtcifrado = txtcifrado.replace(/imes/igm,"i");
-	var txtcifrado = txtcifrado.replace(/ai/igm,"a");
-	var txtcifrado = txtcifrado.replace(/ufat/igm,"u");
 
-	document.getElementById("muñeco").style.display = "none";
-	document.getElementById("texto").style.display = "none";
-	document.getElementById("copiar").style.display = "show";
-	document.getElementById("textoFinal").innerHTML = txtcifrado;
-	document.getElementById("textoInput").innerHTML = " ";
-	document.getElementById("copiar").style.display = "inherit";
-}
-function copiar() {
-	var contenido = document.querySelector("#textoFinal");
-	contenido.select();
-	document.execCommand('copy');
-//	alert("Copied!");
-}
+const reset = () => {
+	textoInicial.innerHTML = "";
+    textoInicial.style.height = "auto";
+    textFinal.innerHTML = "";
+	textFinal.classList.remove("ajustar");
+	munheco.classList.remove("ocultar");
+	textFinal.placeholder = "Ningún mensaje fue encontrado";
+	textInfo.classList.remove("ocultar")
+	copy.classList.add("bn_ocultar");
+	textoInicial.focus();
+};
+
+let remplazar = [
+	["e", "enter"],
+	["o", "ober"],
+	["i", "imes"],
+	["a", "ai"],
+	["u", "ufat"]
+];
+
+encriptar.addEventListener('click', () => {
+
+	const texto = textoInicial.value.toLowerCase();
+
+	if (texto != "") {
+		function encript(newtext) {
+			for (let i = 0; i < remplazar.length; i++) {
+				if (newtext.includes(remplazar[i][0])) {
+					newtext = newtext.replaceAll(remplazar[i][0], remplazar[i][1]);
+				};
+			};
+			return newtext;
+		};
+		remplace(encript(texto));
+	} else {
+		alert("Ingrese texto para encriptar");
+		reset();
+	};
+});
+
+desencriptar.addEventListener('click', () => {
+
+	const texto = textoInicial.value.toLowerCase();
+
+	if (texto != "") {
+		function encript(newtext) {
+			for (let i = 0; i < remplazar.length; i++) {
+				if (newtext.includes(remplazar[i][1])) {
+					newtext = newtext.replaceAll(remplazar[i][1], remplazar[i][0]);
+				};
+			};
+			return newtext;
+		};
+		remplace(encript(texto));
+	} else {
+		alert("Ingrese texto a desencriptar");
+		reset();
+	};
+});
+
+copy.addEventListener("click", () => {
+	let texto = textFinal.textContent;
+	navigator.clipboard.writeText(texto);
+	alert("Texto Copiado");
+	reset();
+});
+
+const textarea = document.getElementById("textoInput");
+textarea.addEventListener("keyup", e => {
+	textarea.style.height = "auto";
+	let scHeight = e.target.scrollHeight;
+	textarea.style.height = `${scHeight}px`;
+});
