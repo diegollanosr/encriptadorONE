@@ -84,9 +84,8 @@ desencriptar.addEventListener('click', () => {
 });
 
 copy.addEventListener("click", () => {
-	let texto = textFinal.textContent;
-	navigator.clipboard.writeText(texto);
-	document.execCommand('copy');
+	let texto = textFinal;
+	navigator.clipboard.writeText(texto.value);
 	alert("Texto Copiado");
 	reset();
 });
