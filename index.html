@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html>
-
+<html>  
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Encriptador de texto</title>
-    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logodlr.svg">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Encriptador</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/imagenes/segurity_prueba.svg">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Space+Mono&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"> 
 </head>
-
 <body>
     <header>
-        <div class="header">
-            <div class="logos">
-                <img class="logo" src="imagenes/alura.svg">
-                <img class="logo" src="imagenes/logo.svg">
-            </div>
-            <h1 class="title">Encriptador de textos</h1>
+        <div class="container__header">
+            <div class="header">
+                <a href="https://app.aluracursos.com/emprega-one/profile/diegollanosr" target="_blank"> 
+                    <img class="logo" src="./assets/imagenes/alura.svg">
+                </a>
+                <!--
+                <h1 class="title">Encriptador de textos</h1>
+                <a class="header__link__button" href="https://diegollanosr.github.io/">
+                    <button class="header__button">
+                        <img class="header__button__logo" src="./assets/imagenes/logo.svg">
+                    </button>
+                </a>
+                -->
+            </div>  
         </div>
     </header>
     <main>
-        <div class="container">
+        <article class="container">
             <section class="left" id="left">
                 <textarea class="inputtextarea" id="textoInput" placeholder="Ingrese el texto aquí" autofocus></textarea>
                 <div class="content_botones">
                     <span class="info">
-                        <img src="imagenes/!.svg" alt="advertencia" />
+                        <img src="./assets/imagenes/!.svg" alt="advertencia" />
                         Solo letras minúsculas y sin acentos
                     </span>
                     <div class="botones">
@@ -39,28 +45,30 @@
                 </div>
             </section>
             <section class="right" id="rigth">
-                <img id="munheco" class="munheco" src="imagenes/munheco.svg"
-                    alt="Ningún mensaje fue encontrado. Ingresa el texto que desees encriptar o desencriptar.">
+                <img id="munheco" class="munheco" src="./assets/imagenes/munheco.svg" alt="Ningún mensaje fue encontrado. Ingresa el texto que desees encriptar o desencriptar.">
                 <textarea id="textoFinal" class="textoFinal" placeholder="Ningún mensaje fue encontrado"></textarea>
                 <p id="textoInfo" class="info">Ingresa el texto que desees encriptar o desencriptar.</p>
                 <button class="button__copiar bn_ocultar" id="button__copiar">Copiar</button>
             </section>
-        </div>
+        </article>
     </main>
     <footer class="footer ">
-        <p class="creador">Create by Diego Llanos R.<br><span class="usuario">@diegollanosr</span></p>
-        <div class="">
-            <a href="https://github.com/diegollanosr" target="_blank">
-                <img class="links" src="./imagenes/github.svg" />
+        <p class="creador">Create by 
+            <a href="https://diegollanosr.github.io/" target="_blank" class="usuario">
+                @diegollanosr
             </a>
-
+        </p>
+        <div>
+            <a href="https://github.com/diegollanosr" target="_blank">
+                <img class="links" src="./assets/imagenes/github.svg" />
+            </a>
+            
             <a href="https://www.linkedin.com/in/diegollanosr/" target="_blank">
-                <img class="links" src="./imagenes/linkedin.svg" />
+                <img class="links" src="./assets/imagenes/linkedin.svg" />
             </a>
         </div>
-
     </footer>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

@@ -11,10 +11,12 @@ const textoInicial = document.getElementById("textoInput");
 const textFinal = document.getElementById("textoFinal");
 const munheco = document.getElementById("munheco");
 const textInfo = document.getElementById("textoInfo");
+const rigth = document.getElementById("rigth")
 	
 const remplace = (newvalue) => {
 	textFinal.innerHTML = newvalue;
 	textFinal.classList.add("ajustar");
+	rigth.classList.add("ajuste")
 	textoInicial.value = "";
 	textoInicial.style.height = "auto"
 	textoInicial.placeholder = "Ingrese el texto aquí";
@@ -24,9 +26,10 @@ const remplace = (newvalue) => {
 }
 
 const reset = () => {
-	textoInicial.innerHTML = "";
+	textoInicial.value = "";
     textoInicial.style.height = "auto";
-    textFinal.innerHTML = "";
+	textFinal.innerHTML = "";
+	rigth.classList.remove("ajuste")
 	textFinal.classList.remove("ajustar");
 	munheco.classList.remove("ocultar");
 	textFinal.placeholder = "Ningún mensaje fue encontrado";
@@ -68,7 +71,7 @@ desencriptar.addEventListener('click', () => {
 	const texto = textoInicial.value.toLowerCase();
 
 	if (texto != "") {
-		function encript(newtext) {
+		function desencript(newtext) {
 			for (let i = 0; i < remplazar.length; i++) {
 				if (newtext.includes(remplazar[i][1])) {
 					newtext = newtext.replaceAll(remplazar[i][1], remplazar[i][0]);
@@ -76,7 +79,7 @@ desencriptar.addEventListener('click', () => {
 			};
 			return newtext;
 		};
-		remplace(encript(texto));
+		remplace(desencript(texto));
 	} else {
 		alert("Ingrese texto a desencriptar");
 		reset();
@@ -85,14 +88,21 @@ desencriptar.addEventListener('click', () => {
 
 copy.addEventListener("click", () => {
 	let texto = textFinal;
-	navigator.clipboard.writeText(texto.value);
+	texto.select();
+	document.execCommand('copy');
+	//navigator.clipboard.writeText(texto.value);
+	//clipboard función no compatible con móviles
 	alert("Texto Copiado");
 	reset();
 });
-
-const textarea = document.getElementById("textoInput");
-textarea.addEventListener("keyup", e => {
-	textarea.style.height = "auto";
+//auto ajuste de textarea
+textoInicial.addEventListener("change", e => {
+	textoInicial.style.height = "auto";
 	let scHeight = e.target.scrollHeight;
-	textarea.style.height = `${scHeight}px`;
+	textoInicial.style.height = `${scHeight}px`;
+});
+textoInicial.addEventListener("keyup", e => {
+	textoInicial.style.height = "auto";
+	let scHeight = e.target.scrollHeight;
+	textoInicial.style.height = `${scHeight}px`;
 });
